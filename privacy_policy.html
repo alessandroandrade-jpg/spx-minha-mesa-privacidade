@@ -1,0 +1,261 @@
+<title>Minha Mesa — Privacidade</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: coluna única tipo "manual de operação" — rótulo numerado + regra fina por seção, rail lateral fixo com o índice em telas largas. */
+  :root {
+    --bg: #faf9f7;
+    --surface: #ffffff;
+    --border: rgba(23, 22, 20, .10);
+    --fg: #17140f;
+    --fg-muted: #6b6560;
+    --accent: #d9490f;
+    --accent-soft: rgba(217, 73, 15, .10);
+    --mono: #4a453f;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #15130f;
+      --surface: #1d1a15;
+      --border: rgba(255, 255, 255, .12);
+      --fg: #f3efe8;
+      --fg-muted: #a89f93;
+      --accent: #ff7a3d;
+      --accent-soft: rgba(255, 122, 61, .14);
+      --mono: #c9c0b3;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #15130f;
+    --surface: #1d1a15;
+    --border: rgba(255, 255, 255, .12);
+    --fg: #f3efe8;
+    --fg-muted: #a89f93;
+    --accent: #ff7a3d;
+    --accent-soft: rgba(255, 122, 61, .14);
+    --mono: #c9c0b3;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "IBM Plex Sans", -apple-system, "Segoe UI", sans-serif;
+    line-height: 1.6;
+    padding-inline: 20px;
+    padding-block: 40px 64px;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; }
+
+  .kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 12px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 5px 10px;
+    border-radius: 999px;
+    margin-bottom: 18px;
+  }
+  h1 {
+    font-size: clamp(28px, 5vw, 38px);
+    line-height: 1.15;
+    margin: 0 0 8px;
+    text-wrap: balance;
+    letter-spacing: -.01em;
+  }
+  .subtitle { color: var(--fg-muted); font-size: 16px; margin: 0 0 6px; max-width: 56ch; }
+  .meta {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 12.5px;
+    color: var(--fg-muted);
+    margin: 22px 0 40px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+  }
+
+  section { margin-bottom: 40px; }
+  .sec-hdr {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .sec-num {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 12.5px;
+    color: var(--accent);
+    flex: none;
+  }
+  .sec-hdr h2 { font-size: 18px; margin: 0; letter-spacing: -.005em; }
+
+  p { margin: 0 0 12px; max-width: 68ch; }
+  p:last-child { margin-bottom: 0; }
+  ul { margin: 0 0 12px; padding-left: 20px; max-width: 68ch; }
+  li { margin-bottom: 8px; }
+  li:last-child { margin-bottom: 0; }
+  strong { font-weight: 600; }
+  code {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .92em;
+    background: var(--accent-soft);
+    color: var(--mono);
+    padding: 1px 6px;
+    border-radius: 4px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 12px;
+    margin-top: 4px;
+  }
+  .perm-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .perm-name {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 12.5px;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .perm-card p { font-size: 13.5px; margin: 0; color: var(--fg-muted); }
+
+  .not-list { list-style: none; padding: 0; margin: 0; }
+  .not-list li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 15px;
+  }
+  .not-list .x { color: var(--accent); font-family: "IBM Plex Mono", ui-monospace, monospace; flex: none; }
+
+  footer {
+    margin-top: 56px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--fg-muted);
+    font-size: 13px;
+  }
+</style>
+
+<div class="wrap">
+  <span class="kicker">🚚 Minha Mesa · Extensão interna SPX</span>
+  <h1>Política de Privacidade</h1>
+  <p class="subtitle">Como a extensão "SPX Minha Mesa" acessa, usa e guarda dados durante o seu uso.</p>
+  <div class="meta">Última atualização: 29 de setembro de 2026 · Contato: alessandro.pgm2014@gmail.com</div>
+
+  <section>
+    <div class="sec-hdr"><span class="sec-num">01</span><h2>Propósito único</h2></div>
+    <p>
+      A extensão <strong>SPX Minha Mesa</strong> tem um único propósito: dar a operadores e líderes de
+      doca da SPX (Shopee Xpress) visibilidade em tempo real sobre a atribuição e chegada de motoristas
+      nas mesas/docas do hub onde trabalham. Ela faz isso de três formas — um alerta flutuante por mesa,
+      um Painel TV com todas as mesas de uma vez, e um Painel de Chegada que cruza quem está escalado
+      para carregar hoje com quem já chegou fisicamente no hub.
+    </p>
+    <p>
+      É uma ferramenta de uso interno, feita para quem já trabalha logado no sistema operacional da SPX
+      (<code>spx.shopee.com.br</code>). Ela não substitui, nem se conecta a, nenhum sistema além do
+      próprio SPX.
+    </p>
+  </section>
+
+  <section>
+    <div class="sec-hdr"><span class="sec-num">02</span><h2>Quais dados a extensão acessa</h2></div>
+    <p>Pra cumprir esse propósito, a extensão lê os seguintes dados — sempre a partir das próprias APIs e telas da SPX, usando a sessão em que o usuário já está logado:</p>
+    <ul>
+      <li><strong>Identificação do motorista:</strong> ID e nome, conforme já exibidos nas telas de Fila de Saída, Atribuição de Entrega e Gestão de Equipe da SPX.</li>
+      <li><strong>Placa do veículo</strong> associada ao motorista/rota do dia.</li>
+      <li><strong>Status operacional:</strong> gaiola, doca/mesa, horário de atribuição, status na fila (pendente, atribuído, ocupado, em espera, encerrado) e progresso de conferência.</li>
+      <li><strong>Cookies de sessão</strong> do domínio <code>spx.shopee.com.br</code> (<code>csrftoken</code> e um ID de dispositivo), usados apenas para autenticar as chamadas que a própria extensão faz às APIs da SPX em nome do usuário já logado.</li>
+    </ul>
+    <p>Opcionalmente, o próprio usuário pode importar um arquivo CSV exportado por ele mesmo da tela Gestão de Equipe da SPX, pra completar a base de placas cadastradas. Esse arquivo é lido localmente no navegador — nunca é enviado a nenhum servidor.</p>
+  </section>
+
+  <section>
+    <div class="sec-hdr"><span class="sec-num">03</span><h2>Onde os dados ficam</h2></div>
+    <div class="card">
+      <p style="margin-bottom:0;">
+        Tudo o que a extensão lê fica guardado <strong>apenas localmente</strong>, no
+        <code>chrome.storage.local</code> do navegador do próprio usuário — configurações de mesa/estação,
+        histórico do dia e o cache de placas. <strong>Nada é enviado, sincronizado ou processado em
+        nenhum servidor de terceiros.</strong> A extensão não tem backend próprio: toda comunicação de
+        rede que ela faz é diretamente entre o navegador do usuário e os domínios da própria SPX.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-hdr"><span class="sec-num">04</span><h2>Permissões usadas</h2></div>
+    <div class="grid">
+      <div class="perm-card">
+        <span class="perm-name">storage</span>
+        <p>Guardar configurações e o cache de dados descritos acima, só no navegador do usuário.</p>
+      </div>
+      <div class="perm-card">
+        <span class="perm-name">notifications</span>
+        <p>Avisar o operador quando um novo motorista é atribuído à mesa que ele está acompanhando.</p>
+      </div>
+      <div class="perm-card">
+        <span class="perm-name">cookies</span>
+        <p>Ler o cookie de sessão já existente do usuário em <code>spx.shopee.com.br</code>, pra autenticar as chamadas às APIs da SPX feitas pelas próprias páginas da extensão.</p>
+      </div>
+      <div class="perm-card">
+        <span class="perm-name">host: spx.shopee.com.br</span>
+        <p>Único domínio acessado — onde o alerta de mesa roda e de onde os dados operacionais são lidos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-hdr"><span class="sec-num">05</span><h2>O que a extensão não faz</h2></div>
+    <ul class="not-list">
+      <li><span class="x">—</span>Não vende nem transfere dados a terceiros.</li>
+      <li><span class="x">—</span>Não usa os dados pra nenhum fim fora do propósito descrito na seção 1.</li>
+      <li><span class="x">—</span>Não usa os dados pra avaliar crédito, empréstimo ou qualquer decisão financeira.</li>
+      <li><span class="x">—</span>Não coleta localização, histórico de navegação, digitação, cliques fora da própria interface da extensão, nem qualquer dado de saúde, pagamento ou comunicação pessoal.</li>
+      <li><span class="x">—</span>Não exibe anúncios nem faz rastreamento para fins de publicidade.</li>
+      <li><span class="x">—</span>Não carrega código remoto — todo o JavaScript roda a partir dos arquivos empacotados na própria extensão.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-hdr"><span class="sec-num">06</span><h2>Retenção e remoção</h2></div>
+    <p>
+      Os dados guardados localmente somem quando o usuário desinstala a extensão ou limpa os dados de
+      navegação do Chrome. Não existe cópia em nenhum outro lugar pra ser removida à parte — porque nunca
+      saem do navegador do usuário.
+    </p>
+  </section>
+
+  <section>
+    <div class="sec-hdr"><span class="sec-num">07</span><h2>Alterações e contato</h2></div>
+    <p>
+      Esta política pode ser atualizada se a extensão ganhar novas permissões ou fontes de dados; a data
+      no topo desta página reflete a versão mais recente. Dúvidas sobre esta política ou sobre o
+      funcionamento da extensão podem ser enviadas para
+      <strong>alessandro.pgm2014@gmail.com</strong>.
+    </p>
+  </section>
+
+  <footer>SPX Minha Mesa · ferramenta interna de operação, sem vínculo com a Shopee/SPX além do uso do próprio sistema da empresa pelo colaborador.</footer>
+</div>
